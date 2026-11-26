@@ -12,12 +12,6 @@ public class Dice {
         }
     }
 
-    public void roll() {
-        for (int i = 0; i < 5; i++) {
-            dice[i] = ThreadLocalRandom.current().nextInt(1,7);
-        }
-    }
-
     public boolean reroll(int[] targets) {
         if (rerolls >= 2) {
             return false;
