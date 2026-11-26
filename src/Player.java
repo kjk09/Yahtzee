@@ -38,6 +38,58 @@ public class Player {
         return this.name;
     }
 
+    public int getOnes() {
+        return ones;
+    }
+
+    public int getTwos() {
+        return twos;
+    }
+
+    public int getThrees() {
+        return threes;
+    }
+
+    public int getFours() {
+        return fours;
+    }
+
+    public int getFives() {
+        return fives;
+    }
+
+    public int getSixes() {
+        return sixes;
+    }
+
+    public int getThreeOAK() {
+        return threeOAK;
+    }
+
+    public int getFourOAK() {
+        return fourOAK;
+    }
+
+    public int getFullHouse() {
+        return fullHouse;
+    }
+
+    public int getSmallStraight() {
+        return smallStraight;
+    }
+
+    public int getLargeStraight() {
+        return largeStraight;
+    }
+
+    public int getYahtzee() {
+        return yahtzee;
+    }
+
+    public int getChance() {
+        return chance;
+    }
+
     public int getScore() {
         int sum = 0;
         for (int i : new int[]{ones, twos, threes, fours, fives, sixes,
