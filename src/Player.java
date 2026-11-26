@@ -297,7 +297,7 @@ public class Player {
             valid += "yahtzee\n";
         }
         if (chance == -1) {
-            valid += "chance\n"
+            valid += "chance\n";
         }
         return valid;
     }
