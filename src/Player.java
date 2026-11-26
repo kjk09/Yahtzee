@@ -296,6 +296,9 @@ public class Player {
         if (yahtzee == -1) {
             valid += "yahtzee\n";
         }
+        if (chance == -1) {
+            valid += "chance\n"
+        }
         return valid;
     }
 
