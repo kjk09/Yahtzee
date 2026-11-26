@@ -339,6 +339,9 @@ public class Player {
         if (fourOAK == -1) {
             valid += "four of a kind\n";
         }
+        if (fullHouse == -1) {
+            valid += "full house\n";
+        }
         if (smallStraight == -1) {
             valid += "small straight\n";
         }
