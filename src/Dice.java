@@ -7,6 +7,9 @@ public class Dice {
     public Dice() {
         dice = new int[5];
         rerolls = 0;
+        for (int i = 0; i < 5; i++) {
+            dice[i] = ThreadLocalRandom.current().nextInt(1,7);
+        }
     }
 
     public void roll() {
