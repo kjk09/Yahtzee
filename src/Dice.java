@@ -29,4 +29,9 @@ public class Dice {
     public int[] getRoll() {
         return dice;
     }
+
+    @Override
+    public String toString() {
+        return dice[0] + ", " + dice[1] + ", " + dice[2] + ", " + dice[3] + ", " + dice[4];
+    }
 }
