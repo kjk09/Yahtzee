@@ -8,14 +8,21 @@ void main() {
         try {
             playerCount = Integer.parseInt(response);
             break;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             IO.println("Please enter a valid number.");
         }
     }
     Player[] players = new Player[playerCount];
-    for (int i = 0; i < playerCount; i++) {
+    int nameCount = 0;
+    while (nameCount < playerCount) {
         IO.println("Please enter the player's name.");
-        players[i] = new Player(IO.readln());
+        String nameInput = IO.readln();
+        if (nameInput == null || nameInput.isEmpty()) {
+            IO.println("Error: Please input a valid name");
+        } else {
+            players[nameCount] = new Player(nameInput);
+            nameCount++;
+        }
     }
     for (int turn = 0; turn < 13; turn++) {
         for (Player p : players) {
@@ -25,22 +32,63 @@ void main() {
             Dice d = new Dice();
             IO.println("Initial roll:\n" + d);
             IO.println("Reroll dice? (yes/no)");
-            if (IO.readln().equalsIgnoreCase("yes")) {
+            String rerollChoice = IO.readln();
+            while (rerollChoice == null || rerollChoice.isEmpty() ||
+                    (!rerollChoice.equalsIgnoreCase("yes") && !rerollChoice.equalsIgnoreCase("no"))) {
+                IO.println("Please enter yes or no.");
+                rerollChoice = IO.readln();
+            }
+            if (rerollChoice.equalsIgnoreCase("yes")) {
                 IO.println("Input the indexes (1-5, separated by spaces) of dice to reroll.");
-                String[] responseStr = IO.readln().split(" ");
-                int[] response = new int[responseStr.length];
-                for (int i = 0; i < responseStr.length; i++) {
-                    response[i] = Integer.parseInt(responseStr[i]) - 1;
+                String[] rerollIndexesString;
+                int[] rerollIndexes = null;
+                boolean validDiceIndex = false;
+                while (!validDiceIndex) {
+                    String diceIndexChoices = IO.readln();
+                    try {
+                        rerollIndexesString = diceIndexChoices.split(" ");
+                        if (rerollIndexesString.length > 5 || rerollIndexesString.length < 1) {
+                            IO.println("Input valid indexes.");
+                            continue;
+                        }
+                        rerollIndexes = new int[rerollIndexesString.length];
+                        for (int i = 0; i < rerollIndexesString.length; i++) {
+                            rerollIndexes[i] = Integer.parseInt(rerollIndexesString[i]) - 1;
+                        }
+                        validDiceIndex = true;
+                    } catch (Exception e) {
+                        IO.println("Input valid indexes.");
+                    }
                 }
-                d.reroll(response);
+                d.reroll(rerollIndexes);
                 IO.println("New values:\n" + d);
                 IO.println("Reroll again? (yes/no)");
-                if (IO.readln().equalsIgnoreCase("yes")) {
+                rerollChoice = IO.readln();
+                while (rerollChoice == null || rerollChoice.isEmpty() ||
+                        (!rerollChoice.equalsIgnoreCase("yes") && !rerollChoice.equalsIgnoreCase("no"))) {
+                    IO.println("Please enter yes or no.");
+                    rerollChoice = IO.readln();
+                }
+                if (rerollChoice.equalsIgnoreCase("yes")) {
                     IO.println("Input the indexes (1-5, separated by spaces) of dice to reroll.");
-                    String[] rerollIndexesString = IO.readln().split(" ");
-                    int[] rerollIndexes = new int[rerollIndexesString.length];
-                    for (int i = 0; i < rerollIndexesString.length; i++) {
-                        rerollIndexes[i] = Integer.parseInt(rerollIndexesString[i]) - 1;
+                    rerollIndexes = null;
+                    validDiceIndex = false;
+                    while (!validDiceIndex) {
+                        String diceIndexChoices = IO.readln();
+                        try {
+                            rerollIndexesString = diceIndexChoices.split(" ");
+                            if (rerollIndexesString.length > 5 || rerollIndexesString.length < 1) {
+                                IO.println("Input valid indexes.");
+                                continue;
+                            }
+                            rerollIndexes = new int[rerollIndexesString.length];
+                            for (int i = 0; i < rerollIndexesString.length; i++) {
+                                rerollIndexes[i] = Integer.parseInt(rerollIndexesString[i]) - 1;
+                            }
+                            validDiceIndex = true;
+                        } catch (Exception e) {
+                            IO.println("Input valid indexes.");
+                        }
                     }
                     d.reroll(rerollIndexes);
                     IO.println("New values:\n" + d);
@@ -51,6 +99,10 @@ void main() {
             boolean pickedValidBox = false;
             while (!pickedValidBox) {
                 String scoreBoxPick = IO.readln();
+                if (scoreBoxPick == null) {
+                    IO.println("Error: Pick a valid category");
+                    continue;
+                }
                 scoreBoxPick = scoreBoxPick.toLowerCase();
                 switch (scoreBoxPick) {
                     case "ones":
