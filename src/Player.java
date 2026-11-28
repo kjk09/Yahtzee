@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Player {
-    private String name;
+    private final String name;
     private int ones;
     private int twos;
     private int threes;
