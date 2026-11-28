@@ -105,16 +105,7 @@ public class Player {
         return sum;
     }
 
-    public boolean isComplete() {
-        for (int i : new int[]{ones, twos, threes, fours, fives, sixes,
-                threeOAK, fourOAK, fullHouse, smallStraight, largeStraight,
-                yahtzee, chance}) {
-            if (i == -1) {
-                return false;
-            }
-        }
-        return true;
-    }
+
 
     public boolean scoreOnes(int[] dice) {
         if (ones != -1) {
