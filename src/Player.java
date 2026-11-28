@@ -357,6 +357,75 @@ public class Player {
         return valid;
     }
 
-
-
+    @Override
+    public String toString() {
+        String formattedScorecard = "";
+        if (ones == -1) {
+            formattedScorecard += "Ones: 0\n";
+        } else {
+            formattedScorecard += "Ones: " + ones + "\n";
+        }
+        if (twos == -1) {
+            formattedScorecard += "Twos: 0\n";
+        } else {
+            formattedScorecard += "Twos: " + twos + "\n";
+        }
+        if (threes == -1) {
+            formattedScorecard += "Threes: 0\n";
+        } else {
+            formattedScorecard += "Threes: " + threes + "\n";
+        }
+        if (fours == -1) {
+            formattedScorecard += "Fours: 0\n";
+        } else {
+            formattedScorecard += "Fours: " + fours + "\n";
+        }
+        if (fives == -1) {
+            formattedScorecard += "Fives: 0\n";
+        } else {
+            formattedScorecard += "Fives: " + fives + "\n";
+        }
+        if (sixes == -1) {
+            formattedScorecard += "Sixes: 0\n";
+        } else {
+            formattedScorecard += "Sixes: " + sixes + "\n";
+        }
+        if (threeOAK == -1) {
+            formattedScorecard += "Three of a Kind: 0\n";
+        } else {
+            formattedScorecard += "Three of a Kind: " + threeOAK + "\n";
+        }
+        if (fourOAK == -1) {
+            formattedScorecard += "Four of a Kind: 0\n";
+        } else {
+            formattedScorecard += "Four of a Kind: " + fourOAK + "\n";
+        }
+        if (fullHouse == -1) {
+            formattedScorecard += "Full House: 0\n";
+        } else {
+            formattedScorecard += "Full House: " + fullHouse + "\n";
+        }
+        if (smallStraight == -1) {
+            formattedScorecard += "Small Straight: 0\n";
+        } else {
+            formattedScorecard += "Small Straight: " + smallStraight + "\n";
+        }
+        if (largeStraight == -1) {
+            formattedScorecard += "Large Straight: 0\n";
+        } else {
+            formattedScorecard += "Large Straight: " + largeStraight + "\n";
+        }
+        if (yahtzee == -1) {
+            formattedScorecard += "Yahtzee: 0\n";
+        } else {
+            formattedScorecard += "Yahtzee: " + yahtzee + "\n";
+        }
+        if (chance == -1) {
+            formattedScorecard += "Chance: 0\n";
+        } else {
+            formattedScorecard += "Chance: " + chance + "\n";
+        }
+        formattedScorecard += "Total Score: " + this.getScore();
+        return formattedScorecard;
+    }
 }

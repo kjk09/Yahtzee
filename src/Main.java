@@ -19,7 +19,9 @@ void main() {
     }
     for (int turn = 0; turn < 13; turn++) {
         for (Player p : players) {
-            IO.println("Player " + p.getName() + "'s turn. Rolling initial dice:");
+            IO.println("Player " + p.getName() + "'s turn. Current Scorecard:");
+            IO.println(p);
+            IO.println();
             Dice d = new Dice();
             IO.println("Initial roll:\n" + d);
             IO.println("Reroll dice? (yes/no)");
@@ -44,6 +46,7 @@ void main() {
                     IO.println("New values:\n" + d);
                 }
             }
+            IO.println();
             IO.print("Choose an empty category to score roll in:\n" + p.validBoxes());
             boolean pickedValidBox = false;
             while (!pickedValidBox) {
@@ -170,6 +173,7 @@ void main() {
                     default:
                         IO.println("Error: Pick a valid category");
                 }
+            IO.println();
             }
         }
     }
